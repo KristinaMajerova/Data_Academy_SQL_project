@@ -145,11 +145,11 @@ FROM
             GROUP BY payroll_year
             ) t1
         )payroll
-LEFT join
+LEFT JOIN
     (SELECT *, 
         lag(avg_price,1) OVER (ORDER BY price_year) AS avg_price_lag,
         round(avg_price/lag(avg_price,1) OVER (ORDER BY price_year)*100-100,2) AS growth_avg_price
-        from( 
+        FROM( 
             SELECT price_year, round(avg(avg_price),2) AS avg_price
             FROM t_kristina_majerova_project_sql_primary_final
             GROUP BY price_year
@@ -175,11 +175,11 @@ FROM
             GROUP BY payroll_year
             ) t1
         )payroll
-LEFT join
+LEFT JOIN
     (SELECT *, 
         lag(avg_price,1) OVER (ORDER BY price_year) AS avg_price_lag,
         round(avg_price/lag(avg_price,1) OVER (ORDER BY price_year)*100-100,2) AS growth_avg_price
-        from( 
+        FROM( 
             SELECT price_year, round(avg(avg_price),2) AS avg_price
             FROM t_kristina_majerova_project_sql_primary_final
             GROUP BY price_year
